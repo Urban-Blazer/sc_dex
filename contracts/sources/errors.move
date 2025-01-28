@@ -1,4 +1,4 @@
-module sc_dex::errors {
+module srm_dex::errors {
 
   public fun not_enough_funds_to_lend(): u64 {
     0

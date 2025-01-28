@@ -1,10 +1,10 @@
-module sc_dex::quote {
-  use sc_dex::stable;
-  use sc_dex::volatile;
-  use sc_dex::fees::{Self, Fees};
-  use sc_dex::math64::{min, mul_div_down};
-  use sc_dex::sui_coins_amm::{Self, SuiCoinsPool};
-  use sc_dex::utils::{get_optimal_add_liquidity, is_coin_x};
+module srm_dex::quote {
+  use srm_dex::stable;
+  use srm_dex::volatile;
+  use srm_dex::fees::{Self, Fees};
+  use srm_dex::math64::{min, mul_div_down};
+  use srm_dex::sui_rewards_amm::{Self, SuiCoinsPool};
+  use srm_dex::utils::{get_optimal_add_liquidity, is_coin_x};
 
   public fun amount_out<CoinIn, CoinOut, LpCoin>(pool: &SuiCoinsPool, amount_in: u64): u64 { 
 
@@ -53,9 +53,9 @@ module sc_dex::quote {
     amount_x: u64,
     amount_y: u64
   ): (u64, u64, u64) {
-    let balance_x = sui_coins_amm::balance_x<CoinX, CoinY, LpCoin>(pool);
-    let balance_y = sui_coins_amm::balance_y<CoinX, CoinY, LpCoin>(pool);
-    let supply = sui_coins_amm::lp_coin_supply<CoinX, CoinY, LpCoin>(pool);
+    let balance_x = sui_rewards_amm::balance_x<CoinX, CoinY, LpCoin>(pool);
+    let balance_y = sui_rewards_amm::balance_y<CoinX, CoinY, LpCoin>(pool);
+    let supply = sui_rewards_amm::lp_coin_supply<CoinX, CoinY, LpCoin>(pool);
 
     let (optimal_x_amount, optimal_y_amount) = get_optimal_add_liquidity(
       amount_x,
@@ -76,9 +76,9 @@ module sc_dex::quote {
     pool: &SuiCoinsPool,
     amount: u64
   ): (u64, u64) {
-    let balance_x = sui_coins_amm::balance_x<CoinX, CoinY, LpCoin>(pool);
-    let balance_y = sui_coins_amm::balance_y<CoinX, CoinY, LpCoin>(pool);
-    let supply = sui_coins_amm::lp_coin_supply<CoinX, CoinY, LpCoin>(pool);
+    let balance_x = sui_rewards_amm::balance_x<CoinX, CoinY, LpCoin>(pool);
+    let balance_y = sui_rewards_amm::balance_y<CoinX, CoinY, LpCoin>(pool);
+    let supply = sui_rewards_amm::lp_coin_supply<CoinX, CoinY, LpCoin>(pool);
 
     (
       mul_div_down(amount, balance_x, supply),
@@ -92,12 +92,12 @@ module sc_dex::quote {
   }
 
   fun get_pool_data<CoinX, CoinY, LpCoin>(pool: &SuiCoinsPool): (u64, u64, u64, u64, bool, Fees) {
-    let fees = sui_coins_amm::fees<CoinX, CoinY, LpCoin>(pool);
-    let balance_x = sui_coins_amm::balance_x<CoinX, CoinY, LpCoin>(pool);
-    let balance_y = sui_coins_amm::balance_y<CoinX, CoinY, LpCoin>(pool);
-    let is_volatile = sui_coins_amm::volatile<CoinX, CoinY, LpCoin>(pool);
-    let decimals_x = sui_coins_amm::decimals_x<CoinX, CoinY, LpCoin>(pool);
-    let decimals_y = sui_coins_amm::decimals_y<CoinX, CoinY, LpCoin>(pool);
+    let fees = sui_rewards_amm::fees<CoinX, CoinY, LpCoin>(pool);
+    let balance_x = sui_rewards_amm::balance_x<CoinX, CoinY, LpCoin>(pool);
+    let balance_y = sui_rewards_amm::balance_y<CoinX, CoinY, LpCoin>(pool);
+    let is_volatile = sui_rewards_amm::volatile<CoinX, CoinY, LpCoin>(pool);
+    let decimals_x = sui_rewards_amm::decimals_x<CoinX, CoinY, LpCoin>(pool);
+    let decimals_y = sui_rewards_amm::decimals_y<CoinX, CoinY, LpCoin>(pool);
     (balance_x, balance_y, decimals_x, decimals_y, is_volatile, fees)
   }
 }

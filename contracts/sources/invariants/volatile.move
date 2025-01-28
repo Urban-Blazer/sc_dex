@@ -1,7 +1,7 @@
-module sc_dex::volatile {
+module srm_dex::volatile {
 
-  use sc_dex::errors;
-  use sc_dex::math256::div_up;
+  use srm_dex::errors;
+  use srm_dex::math256::div_up;
 
   public fun invariant_(x: u64, y: u64): u256 {
      (x as u256) * (y as u256)

@@ -1,7 +1,7 @@
-module sc_dex::stable {
+module srm_dex::stable {
 
-  use sc_dex::errors;
-  use sc_dex::math256::{div_up, diff};
+  use srm_dex::errors;
+  use srm_dex::math256::{div_up, diff};
 
   const PRECISION: u256 = 1_000_000_000_000_000_000;
 

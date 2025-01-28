@@ -1,9 +1,9 @@
-module sc_dex::fees {
+module srm_dex::fees {
   use std::option::{Self, Option};
 
-  use sc_dex::math256::mul_div_up;
+  use srm_dex::math256::mul_div_up;
 
-  use sc_dex::errors;
+  use srm_dex::errors;
 
   const PRECISION: u256 = 1_000_000_000_000_000_000;
   const MAX_FEE_PERCENT: u256 = 20_000_000_000_000_000; // 2%

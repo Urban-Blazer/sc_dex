@@ -1,4 +1,4 @@
-module sc_dex::sui_coins_amm {
+module srm_dex::sui_rewards_amm {
   use std::ascii;
   use std::string;
   use std::option::{Self, Option};
@@ -13,16 +13,16 @@ module sc_dex::sui_coins_amm {
   use sui::balance::{Self, Balance};
   use sui::coin::{Self, Coin, CoinMetadata, TreasuryCap};
 
-  use sc_dex::utils;
-  use sc_dex::errors;
-  use sc_dex::stable;
-  use sc_dex::events;
-  use sc_dex::volatile; 
-  use sc_dex::admin::Admin;
-  use sc_dex::fees::{Self, Fees};
-  use sc_dex::math64::{min, mul_div_down}; 
-  use sc_dex::math256::{sqrt_down, mul_div_up};
-  use sc_dex::curves::{Self, Volatile, Stable};
+  use srm_dex::utils;
+  use srm_dex::errors;
+  use srm_dex::stable;
+  use srm_dex::events;
+  use srm_dex::volatile; 
+  use srm_dex::admin::Admin;
+  use srm_dex::fees::{Self, Fees};
+  use srm_dex::math64::{min, mul_div_down}; 
+  use srm_dex::math256::{sqrt_down, mul_div_up};
+  use srm_dex::curves::{Self, Volatile, Stable};
 
   const PRECISION: u256 = 1_000_000_000_000_000_000;
   const MINIMUM_LIQUIDITY: u64 = 100;

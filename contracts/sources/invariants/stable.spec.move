@@ -1,4 +1,4 @@
-spec sc_dex::stable {
+spec srm_dex::stable {
   spec invariant_ {    
     pragma aborts_if_is_partial = true;
     

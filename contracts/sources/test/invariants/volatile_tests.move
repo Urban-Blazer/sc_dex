@@ -1,8 +1,8 @@
 #[test_only]
-module sc_dex::volatile_tests {
+module srm_dex::volatile_tests {
   use sui::test_utils::assert_eq;
 
-  use sc_dex::volatile;
+  use srm_dex::volatile;
 
   #[test]
   fun test_invariant() {

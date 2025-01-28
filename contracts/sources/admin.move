@@ -1,4 +1,4 @@
-module sc_dex::admin {
+module srm_dex::admin {
 
   use sui::transfer::transfer;
   use sui::object::{Self, UID};

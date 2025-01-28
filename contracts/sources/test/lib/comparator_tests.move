@@ -1,11 +1,11 @@
 #[test_only]
-module sc_dex::comparator_tests {
+module srm_dex::comparator_tests {
   use std::vector;
   use std::string;
 
   use sui::test_utils::assert_eq;
 
-  use sc_dex::comparator::{is_equal, compare, is_greater_than, is_smaller_than};
+  use srm_dex::comparator::{is_equal, compare, is_greater_than, is_smaller_than};
 
   struct Complex has drop {
     value0: vector<u128>,
