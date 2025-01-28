@@ -81,7 +81,7 @@ module sc_dex::sui_coins_amm_tests {
 
       assert_eq(coin::get_symbol(&lp_coin_metadata), to_ascii(utf8(b"sc-v-ETH-USDC")));
       assert_eq(coin::get_name(&lp_coin_metadata), utf8(b"sc volatile Ether USD Coin Lp Coin"));
-      assert_eq(sui_coins_amm::exists_<Volatile, ETH, USDC>(&registry), true);
+      assert_eq(sui_coins_amm::exists<Volatile, ETH, USDC>(&registry), true);
       assert_eq(burn_for_testing(lp_coin), expected_shares);
 
       test::return_shared(eth_metadata);
@@ -147,7 +147,7 @@ module sc_dex::sui_coins_amm_tests {
 
       assert_eq(coin::get_symbol(&lp_coin_metadata), to_ascii(utf8(b"sc-s-USDC-USDT")));
       assert_eq(coin::get_name(&lp_coin_metadata), utf8(b"sc stable USD Coin USD Tether Lp Coin"));
-      assert_eq(sui_coins_amm::exists_<Stable, USDC, USDT>(&registry), true);
+      assert_eq(sui_coins_amm::exists<Stable, USDC, USDT>(&registry), true);
       assert_eq(burn_for_testing(lp_coin), expected_shares);
 
       test::return_shared(usdt_metadata);
